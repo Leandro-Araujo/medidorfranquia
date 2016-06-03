@@ -54,7 +54,7 @@
         var $velocidade = $('.js-velocidade').val();
         var $franquia   = $('.js-franquia').val();
         var timeSecond = ($franquia * 8 * 1024)/ $velocidade;
-        $('.js-return').html('<p>'+ transforma_magicamente(timeSecond) +' Horas por mes</p>');
+        $('.js-return').html('<p>'+ transforma_magicamente(parseInt(timeSecond)) +' Horas por mes</p>');
         event.preventDefault();
       });
     });
