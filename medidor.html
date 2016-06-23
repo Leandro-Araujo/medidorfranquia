@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html><!-- Author: Leandro Silva Araújo / <https://github.com/Leandro-Araujo/> -->
+  <head>
+    <title>Medidor de franquia</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+	    <li class="active"><a href="#">Por Mes <span class="sr-only">(current)</span></a></li>
+	    <li><a href="#">Por dia</a></li>
+	  </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+    <div>
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control js-velocidade" placeholder="Velocidade em Mega bits">
+	  <input type="text" class="form-control js-franquia" placeholder="Franquia de dados em GIGA Bytes">
+	</div>
+	<button type="submit" class="btn btn-default js-calcula-mes">Submit</button>
+      </form>
+    </div>
+    <div class="alert alert-warning alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <strong class="js-return">...</strong>
+    </div>
+  </body>
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script>
+    $(function(){
+      $('.js-calcula-mes').click(function(event){
+        function transforma_magicamente(s){	// Função transforma_magicamente é de terceiros      
+          function duas_casas(numero){          // http://www.scriptbrasil.com.br/forum/topic/115818-como-converter-segundos-em-horas/
+	    if (numero <= 9){
+	      numero = "0"+numero;
+	    }
+	  return numero;
+	  }
+	  hora = duas_casas(Math.round(s/3600));
+	  minuto = duas_casas(Math.floor((s%3600)/60));
+	  segundo = duas_casas((s%3600)%60);   
+	  formatado = hora+":"+minuto+":"+segundo;		      
+	  return formatado;
+        }
+        // 1GB tem 8 * 1024 mb
+        // 1H  tem 60x60 segundos
+        var $velocidade = $('.js-velocidade').val();
+        var $franquia   = $('.js-franquia').val();
+        var timeSecond = ($franquia * 8 * 1024)/ $velocidade;
+        $('.js-return').html('<p>'+ transforma_magicamente(parseInt(timeSecond)) +' Horas por mes</p>');
+        event.preventDefault();
+      });
+    });
+  </script>
+</html>
