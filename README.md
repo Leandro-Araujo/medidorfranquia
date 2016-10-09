@@ -4,3 +4,5 @@ Um pequeno medidor de franquia, saiba quanto tempo dura sua internet por mês, s
 Cuidado: Coloque '.' e não ',' para representar os valores decimais, caso coloque alguma string aparecerá um valor não esperado.
 
 Evite colococar números que não sejam naturais no valor da franquia
+
+Acesse o site (aqui)[http://leandro-araujo.github.io/medidorfranquia/medidor]
