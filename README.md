@@ -5,4 +5,4 @@ Cuidado: Coloque '.' e não ',' para representar os valores decimais, caso coloq
 
 Evite colococar números que não sejam naturais no valor da franquia
 
-Acesse o site (aqui)[http://leandro-araujo.github.io/medidorfranquia/medidor]
+Acesse o site aqui[http://leandro-araujo.github.io/medidorfranquia/medidor]
